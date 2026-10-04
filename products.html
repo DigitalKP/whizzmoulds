@@ -619,5 +619,22 @@
   </footer>
 
   <script src="js/script.js"></script>
+
+<script id="whizz-cta-analytics">
+(function(){
+  if(typeof gtag!=='function') return;
+  function track(link){
+    var text=(link.innerText||link.getAttribute('aria-label')||'').trim().replace(/\\s+/g,' ');
+    var href=link.getAttribute('href')||'';
+    var page=location.pathname.split('/').pop()||'index.html';
+    gtag('event','button_click',{button_text:text,destination:href,page:page});
+    if(href.indexOf('wa.me/')!==-1) gtag('event','whatsapp_click',{button_text:text,page:page});
+    else if(href.indexOf('tel:')===0) gtag('event','phone_click',{button_text:text,phone:href.replace('tel:',''),page:page});
+    else if(href.indexOf('mailto:')===0) gtag('event','email_click',{button_text:text,email:href.replace('mailto:',''),page:page});
+    else if(/quote|enquiry|catalog|products|contact/i.test(text)) gtag('event','cta_click',{button_text:text,destination:href,page:page});
+  }
+  document.querySelectorAll('a.btn, a.whatsapp-float, a[href^="tel:"], a[href^="mailto:"], a[href*="wa.me/"]').forEach(function(link){link.addEventListener('click',function(){track(link);});});
+})();
+</script>
 </body>
 </html>
