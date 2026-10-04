@@ -164,46 +164,81 @@
             ✓ Thank you! Your enquiry has been received. Our Kanpur team will call or message you shortly.
           </div>
 
-          <form id="enquiry-form" action="#" method="POST">
-            <div class="form-group">
-              <label for="client-name">Your Full Name *</label>
-              <input type="text" id="client-name" class="form-control" placeholder="e.g. Ramesh Kumar" required>
-            </div>
+          <form id="enquiry-form" action="https://formsubmit.co/whizzmoulds@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Whizz Moulds Website Enquiry">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://digitalkp.github.io/whizzmoulds/thanks.html">
+            <input type="hidden" name="_url" value="https://digitalkp.github.io/whizzmoulds/contact.html">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div id="enquiry-step-1">
               <div class="form-group">
-                <label for="client-phone">Phone Number *</label>
-                <input type="tel" id="client-phone" class="form-control" placeholder="+91 98765 43210" required>
+                <label style="margin-bottom:0.9rem;display:block;">What are you looking for? *</label>
+                <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;">
+                  <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Shoe Sole Moulds" required><span>👟 Shoe Sole Moulds</span></label>
+                  <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Aluminium / PU Moulds"><span>⚙️ Aluminium / PU Moulds</span></label>
+                  <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Saddlery Moulds"><span>🐎 Saddlery Moulds</span></label>
+                  <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Footwear & Slipper Moulds"><span>👞 Footwear & Slipper Moulds</span></label>
+                  <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Rubber / PVC Moulds"><span>🛞 Rubber / PVC Moulds</span></label>
+                  <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Toy Moulds"><span>🧸 Toy Moulds</span></label>
+                  <label class="enquiry-choice" style="grid-column:1/-1;"><input type="radio" name="enquiry_category" value="Other Mould Requirement"><span>🔧 Other Mould Requirement</span></label>
+                </div>
               </div>
+              <button type="button" id="enquiry-next" class="btn btn-primary" style="width:100%;">NEXT →</button>
+            </div>
+
+            <div id="enquiry-step-2" style="display:none;">
               <div class="form-group">
-                <label for="client-email">Email Address</label>
-                <input type="email" id="client-email" class="form-control" placeholder="name@company.com">
+                <label for="client-name">Your Name *</label>
+                <input type="text" id="client-name" name="name" class="form-control" placeholder="Your name" required>
+              </div>
+
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                <div class="form-group">
+                  <label for="client-phone">Phone / WhatsApp *</label>
+                  <input type="tel" id="client-phone" name="phone" class="form-control" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="form-group">
+                  <label for="client-email">Email</label>
+                  <input type="email" id="client-email" name="email" class="form-control" placeholder="name@company.com">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="client-message">Tell us briefly about your requirement</label>
+                <textarea id="client-message" name="message" class="form-control" rows="3" placeholder="Share size, quantity or any other useful detail..."></textarea>
+              </div>
+
+              <div style="display:flex;gap:0.75rem;">
+                <button type="button" id="enquiry-back" class="btn btn-secondary" style="flex:0 0 110px;">← BACK</button>
+                <button type="submit" class="btn btn-primary" style="flex:1;">GET A QUOTE →</button>
               </div>
             </div>
-
-            <div class="form-group">
-              <label for="product-category">Select Product Category *</label>
-              <select id="product-category" class="form-control" required>
-                <option value="" disabled selected>-- Select Mould Category --</option>
-                <option value="Shoe Sole Mould">Shoe Sole Mould (Aluminium / SS / MS)</option>
-                <option value="Shoe Mould">Shoe Mould (Aluminium Dip / PU Pouring / TPU)</option>
-                <option value="Footwear Mould">Footwear Mould (SS Slipper / MS EVA / TPR)</option>
-                <option value="Rubber Mould">Rubber & PVC Sole Mould</option>
-                <option value="Cutting Die">Shoe Sole Cutting Die</option>
-                <option value="TPR Slipper Sole Mould">TPR Slipper Sole Mould</option>
-                <option value="Footbed Mould">Footbed Mould</option>
-                <option value="Fibre Toe Cap">Fibre Toe Cap</option>
-                <option value="Other Custom Mould">Other Custom Moulding Project</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="client-message">Product Specs / Shoe Sizes / Quantity *</label>
-              <textarea id="client-message" class="form-control" rows="4" placeholder="Mention size runs (e.g. Size 6-10), material choice, sole thickness, or custom tread pattern specs..." required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%;">SUBMIT SPECIFICATION ENQUIRY</button>
           </form>
+
+          <style>
+            .enquiry-choice{display:flex;align-items:center;gap:.65rem;padding:.85rem 1rem;border:1px solid rgba(255,255,255,.14);border-radius:8px;cursor:pointer;transition:.2s ease;background:rgba(255,255,255,.025)}
+            .enquiry-choice:hover{transform:translateY(-2px);border-color:var(--color-safety-orange);background:rgba(255,255,255,.05)}
+            .enquiry-choice input{accent-color:var(--color-safety-orange)}
+            .enquiry-choice:has(input:checked){border-color:var(--color-safety-orange);box-shadow:0 0 0 1px var(--color-safety-orange);background:rgba(255,255,255,.07)}
+            @media(max-width:700px){.enquiry-choice{grid-column:1/-1!important}.contact-form-panel form>div>div[style*="grid-template-columns"]{grid-template-columns:1fr!important}}
+          </style>
+
+          <script>
+            (function(){
+              var form=document.getElementById('enquiry-form');
+              var step1=document.getElementById('enquiry-step-1');
+              var step2=document.getElementById('enquiry-step-2');
+              var next=document.getElementById('enquiry-next');
+              var back=document.getElementById('enquiry-back');
+              next.addEventListener('click',function(){
+                if(!form.querySelector('input[name="enquiry_category"]:checked')){alert('Please select the enquiry category.');return;}
+                step1.style.display='none'; step2.style.display='block';
+                document.getElementById('client-name').focus();
+              });
+              back.addEventListener('click',function(){step2.style.display='none';step1.style.display='block';});
+            })();
+          </script>
         </div>
 
       </div>
