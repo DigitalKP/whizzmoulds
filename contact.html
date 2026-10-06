@@ -164,7 +164,7 @@
             ✓ Thank you! Your enquiry has been received. Our Kanpur team will call or message you shortly.
           </div>
 
-          <form id="enquiry-form" action="https://formsubmit.co/whizzmoulds@gmail.com" method="POST">
+          <form id="enquiry-form" action="https://formsubmit.co/whizzmoulds@gmail.com" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_subject" value="New Whizz Moulds Website Enquiry">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_next" value="https://digitalkp.github.io/whizzmoulds/thanks.html">
@@ -207,6 +207,12 @@
               <div class="form-group">
                 <label for="client-message">Tell us briefly about your requirement</label>
                 <textarea id="client-message" name="message" class="form-control" rows="3" placeholder="Share size, quantity or any other useful detail..."></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="client-attachment">Upload Drawing / Image / Reference File <span style="font-weight:400;opacity:.75;">(Optional)</span></label>
+                <input type="file" id="client-attachment" name="attachment" class="form-control" accept="image/png,image/jpeg,application/pdf,.step,.stp" />
+                <small style="display:block;margin-top:.4rem;opacity:.7;">JPG, PNG, PDF, STEP or STP • Maximum total file size: 10MB</small>
               </div>
 
               <div style="display:flex;gap:0.75rem;">
