@@ -164,18 +164,13 @@
             ✓ Thank you! Your enquiry has been received. Our Kanpur team will call or message you shortly.
           </div>
 
-          <form id="enquiry-form" action="https://formsubmit.co/whizzmoulds@gmail.com" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="_subject" value="New Whizz Moulds Website Enquiry">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://digitalkp.github.io/whizzmoulds/thanks.html">
-            <input type="hidden" name="_url" value="https://digitalkp.github.io/whizzmoulds/contact.html">
-            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
+          <iframe name="google-form-submit" id="google-form-submit" style="display:none;" title="Google Form submission"></iframe>
+          <form id="enquiry-form" action="https://docs.google.com/forms/d/e/1FAIpQLSeAZmNdyrb-LYqnCW25kuLmD-RIcSCoqjxgBp1r2NGcVRYn8A/formResponse" method="POST" target="google-form-submit">
             <div id="enquiry-step-1">
               <div class="form-group">
                 <label style="margin-bottom:0.9rem;display:block;">What are you looking for? *</label>
                 <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;">
-                  <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Shoe Sole Moulds" required><span>👟 Shoe Sole Moulds</span></label>
+                  <label class="enquiry-choice"><input type="radio" name="entry.245980470" value="Shoe Sole Moulds" required><span>👟 Shoe Sole Moulds</span></label>
                   <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Aluminium / PU Moulds"><span>⚙️ Aluminium / PU Moulds</span></label>
                   <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Saddlery Moulds"><span>🐎 Saddlery Moulds</span></label>
                   <label class="enquiry-choice"><input type="radio" name="enquiry_category" value="Footwear & Slipper Moulds"><span>👞 Footwear & Slipper Moulds</span></label>
@@ -190,29 +185,29 @@
             <div id="enquiry-step-2" style="display:none;">
               <div class="form-group">
                 <label for="client-name">Your Name *</label>
-                <input type="text" id="client-name" name="name" class="form-control" placeholder="Your name" required>
+                <input type="text" id="client-name" name="entry.998784695" class="form-control" placeholder="Your name" required>
               </div>
 
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
                 <div class="form-group">
                   <label for="client-phone">Phone / WhatsApp *</label>
-                  <input type="tel" id="client-phone" name="phone" class="form-control" placeholder="+91 98765 43210" required>
+                  <input type="tel" id="client-phone" name="entry.601461717" class="form-control" placeholder="+91 98765 43210" required>
                 </div>
                 <div class="form-group">
                   <label for="client-email">Email</label>
-                  <input type="email" id="client-email" name="email" class="form-control" placeholder="name@company.com">
+                  <input type="email" id="client-email" name="entry.2074137013" class="form-control" placeholder="name@company.com">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="client-message">Tell us briefly about your requirement</label>
-                <textarea id="client-message" name="message" class="form-control" rows="3" placeholder="Share size, quantity or any other useful detail..."></textarea>
+                <textarea id="client-message" name="entry.226857344" class="form-control" rows="3" placeholder="Share size, quantity or any other useful detail..."></textarea>
               </div>
 
               <div class="form-group">
                 <label for="client-attachment">Upload Drawing / Image / Reference File <span style="font-weight:400;opacity:.75;">(Optional)</span></label>
                 <input type="file" id="client-attachment" name="attachment" class="form-control" accept="image/png,image/jpeg,application/pdf,.step,.stp" />
-                <small style="display:block;margin-top:.4rem;opacity:.7;">JPG, PNG, PDF, STEP or STP • Maximum total file size: 10MB</small>
+                <small style="display:block;margin-top:.4rem;opacity:.7;">JPG, PNG, PDF, STEP or STP • File upload is currently kept as an optional UI field; Google Forms direct mapping supports the enquiry fields above.</small>
               </div>
 
               <div style="display:flex;gap:0.75rem;">
@@ -233,12 +228,18 @@
           <script>
             (function(){
               var form=document.getElementById('enquiry-form');
+              form.addEventListener('submit',function(){
+                var submit=form.querySelector('button[type="submit"]');
+                if(submit){submit.disabled=true;submit.textContent='SENDING…';}
+                if(typeof gtag==='function') gtag('event','generate_lead',{form_name:'Whizz Moulds Website Enquiry',page:'contact.html'});
+                setTimeout(function(){window.location.href='thanks.html';},1200);
+              });
               var step1=document.getElementById('enquiry-step-1');
               var step2=document.getElementById('enquiry-step-2');
               var next=document.getElementById('enquiry-next');
               var back=document.getElementById('enquiry-back');
               next.addEventListener('click',function(){
-                if(!form.querySelector('input[name="enquiry_category"]:checked')){alert('Please select the enquiry category.');return;}
+                if(!form.querySelector('input[name="entry.245980470"]:checked')){alert('Please select the enquiry category.');return;}
                 step1.style.display='none'; step2.style.display='block';
                 document.getElementById('client-name').focus();
               });
