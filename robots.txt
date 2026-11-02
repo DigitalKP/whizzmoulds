@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://digitalkp.github.io/whizzmoulds/sitemap.xml
